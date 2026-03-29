@@ -4,6 +4,7 @@
 from abc import ABC, abstractmethod
 from typing import Dict, List, Optional, Tuple
 
+import torch
 from pydantic import BaseModel, Field
 from transformers import PretrainedConfig
 
@@ -155,5 +156,5 @@ class ConfiguredModelArchitecture(BaseModel, frozen=True, arbitrary_types_allowe
 
 # Ensure Pydantic v2 resolves these schemas during normal imports so downstream
 # users don't need to patch `model_rebuild()` calls into installed files.
-ConfiguredModuleArchitecture.model_rebuild()
-ConfiguredModelArchitecture.model_rebuild()
+ConfiguredModuleArchitecture.model_rebuild(_types_namespace={"torch": torch})
+ConfiguredModelArchitecture.model_rebuild(_types_namespace={"torch": torch})
