@@ -151,3 +151,9 @@ class ConfiguredModelArchitecture(BaseModel, frozen=True, arbitrary_types_allowe
             config=self.config,
             weight_prefix=self.info.modules[module_name].weight_prefix,
         )
+
+
+# Ensure Pydantic v2 resolves these schemas during normal imports so downstream
+# users don't need to patch `model_rebuild()` calls into installed files.
+ConfiguredModuleArchitecture.model_rebuild()
+ConfiguredModelArchitecture.model_rebuild()

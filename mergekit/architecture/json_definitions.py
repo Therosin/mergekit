@@ -32,6 +32,7 @@ class JsonModuleArchDef(BaseModel, frozen=True):
     post_weights: List[WeightInfo]
     num_layers_config_key: Optional[str] = None
     override_num_layers: Optional[int] = None
+    vocab_size_config_key: Optional[str] = None
 
 
 class JsonModuleArchitecture(ModuleArchitecture, BaseModel, frozen=True):
@@ -163,6 +164,7 @@ def _load_architecture_json(text: str) -> ModelArchitecture:
             modules={"default": ModuleDefinition(architecture=module)},
             architectures=module.definition.architectures,
             model_type=module.definition.expected_model_type,
+            vocab_size_config_key=module.definition.vocab_size_config_key,
         )
     else:
         raise RuntimeError(f"Unexpected architecture kind: {data['kind']}")
