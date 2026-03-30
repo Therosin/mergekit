@@ -8,6 +8,7 @@
     "vocab_size_config_key": "text_config.vocab_size",
     "tagalong_files": [
         "preprocessor_config.json",
+        "processor_config.json",
         "vocab.json"
     ],
     "modules": {
@@ -221,15 +222,13 @@
                 "num_layers_config_key": "vision_config.depth",
                 "pre_weights": [
                     {
-                        "name": "model.visual.patch_embed.proj.weight",
-                        "is_embed": true
+                        "name": "model.visual.patch_embed.proj.weight"
                     },
                     {
                         "name": "model.visual.patch_embed.proj.bias"
                     },
                     {
-                        "name": "model.visual.pos_embed.weight",
-                        "is_embed": true
+                        "name": "model.visual.pos_embed.weight"
                     }
                 ],
                 "post_weights": [],
